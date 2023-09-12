@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -34,6 +35,7 @@ fun NoteItem(
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
+            .shadow(8.dp, RoundedCornerShape(8.dp))
             .clip(shape = RoundedCornerShape(8.dp))
             .background(color = Color(note.color)),
     ){

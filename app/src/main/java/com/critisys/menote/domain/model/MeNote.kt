@@ -17,7 +17,7 @@ data class MeNote(
     @ColumnInfo(name = "color") val color:Long = 0xFF03DAC5
 ){
     companion object{
-        val colors = listOf<Color>(Dark, Purple200, Purple500, Teal200, simpleGray)
+        val colors = listOf<Color>(WhiteSmoke, Purple200, Purple500, Teal200, simpleGray)
     }
 }
 

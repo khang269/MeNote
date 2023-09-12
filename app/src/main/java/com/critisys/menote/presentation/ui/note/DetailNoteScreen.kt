@@ -1,10 +1,8 @@
 package com.critisys.menote.presentation.ui.note
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.animation.Animatable
-import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.animateColor
+import androidx.compose.animation.*
+import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -42,9 +40,10 @@ fun DetailNoteScreen(
 ){
     val noteState = viewModel.noteState
     val scope = rememberCoroutineScope()
-    val backgroundColor =  remember {
-        Animatable(Color(noteState.value.color))
-    }
+    val animatedBackGroundColor = animateColorAsState(
+        targetValue = Color(noteState.value.color) ,
+        animationSpec = tween(1000, 0, LinearEasing)
+    )
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -76,14 +75,6 @@ fun DetailNoteScreen(
                             shape = RoundedCornerShape(8.dp)
                         )
                         .clickable {
-                            scope.launch {
-                                backgroundColor.animateTo(
-                                    targetValue = Color(colorValue),
-                                    animationSpec = tween(
-                                        durationMillis = 500
-                                    )
-                                )
-                            }
                             viewModel.onEvent(
                                 DetailNoteEvent.ChangeColor(colorValue)
                             )
@@ -104,7 +95,7 @@ fun DetailNoteScreen(
                 .fillMaxWidth()
                 .shadow(8.dp, RoundedCornerShape(8.dp))
                 .clip(RoundedCornerShape(8.dp))
-                .background(backgroundColor.value)
+                .background(animatedBackGroundColor.value)
                 .padding(16.dp)){
                 BasicTextField(
                     value = noteState.value.title,
@@ -141,19 +132,22 @@ fun DetailNoteScreen(
 
             Box(modifier = Modifier
                 .fillMaxWidth()
+                .wrapContentHeight()
                 .shadow(8.dp, RoundedCornerShape(8.dp))
                 .clip(RoundedCornerShape(8.dp))
-                .background(backgroundColor.value)
+                .background(animatedBackGroundColor.value)
                 .padding(16.dp)){
                 BasicTextField(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .wrapContentHeight(),
                     value = noteState.value.content,
                     onValueChange = {
                         viewModel.onEvent(
                             DetailNoteEvent.ChangeContent(it)
                         )
                     },
-                    maxLines = 1,
-                    singleLine = true,
+                    singleLine = false,
                     textStyle = MaterialTheme.typography.body1.copy(color = MaterialTheme.colors.onSurface),
                     cursorBrush = SolidColor(MaterialTheme.colors.onSurface),
                     decorationBox = {
