@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MeNote</string>
+    <string name="delete_warning">Move this note to trash</string>
 </resources>

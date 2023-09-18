@@ -57,12 +57,8 @@ fun HomeTopBar(
                             maxLines = 1
                         )
 
-                        IconButton(
-                            onClick = {
-                                isSearch = true
-                            },
-                        ){
-                            Icon(imageVector = Icons.TwoTone.Search, contentDescription = "")
+                        SimpleIconButton(imageVector = Icons.TwoTone.Search) {
+                            isSearch = true
                         }
                     }
                 }

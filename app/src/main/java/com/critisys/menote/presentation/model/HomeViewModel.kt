@@ -31,8 +31,10 @@ class HomeViewModel @Inject constructor(private val noteUseCase: HomeNotesUseCas
 
     init {
         noteUseCase.getNotes.invoke(_orderState.value).onEach {
-                value -> _state.value = NotesState(notes = value.filter {
-            it.title.lowercase(Locale.ROOT).contains(_state.value.query.lowercase(Locale.ROOT))
+                value -> _state.value = NotesState(
+            pinnedNotes = value.filter { it.title.lowercase(Locale.ROOT).contains(_state.value.query.lowercase(Locale.ROOT)) && it.pinned },
+            notes = value.filter {
+            it.title.lowercase(Locale.ROOT).contains(_state.value.query.lowercase(Locale.ROOT)) && !it.pinned
         })
         }.launchIn(viewModelScope)
     }
@@ -75,9 +77,14 @@ class HomeViewModel @Inject constructor(private val noteUseCase: HomeNotesUseCas
                 viewModelScope.launch {
                     _state.value = _state.value.copy(query = event.query)
                     noteUseCase.getNotes.invoke(_orderState.value).onEach {
-                            value -> _state.value = NotesState(notes = value.filter {
-                        it.title.lowercase(Locale.ROOT).contains(_state.value.query.lowercase(Locale.ROOT))
-                                || _state.value.query.isBlank() || _state.value.query.isEmpty()
+                            value -> _state.value = NotesState(
+                        pinnedNotes = value.filter {
+                            (it.title.lowercase(Locale.ROOT).contains(_state.value.query.lowercase(Locale.ROOT))
+                                    || _state.value.query.isBlank() || _state.value.query.isEmpty()) && it.pinned
+                        },
+                        notes = value.filter {
+                            (it.title.lowercase(Locale.ROOT).contains(_state.value.query.lowercase(Locale.ROOT))
+                                || _state.value.query.isBlank() || _state.value.query.isEmpty()) && !it.pinned
                     })
                     }.launchIn(viewModelScope)
                 }

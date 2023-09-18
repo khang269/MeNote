@@ -8,9 +8,13 @@ import androidx.lifecycle.viewModelScope
 import com.critisys.menote.domain.model.MeNote
 import com.critisys.menote.domain.usecase.DetailNoteUseCase
 import com.critisys.menote.presentation.ui.detail.DetailNoteEvent
+import com.critisys.menote.presentation.ui.note.NotesState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.scopes.ViewModelScoped
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -60,13 +64,24 @@ class NoteViewModel @Inject constructor(
                 )
             }
 
-            is DetailNoteEvent.ChangeColor -> {
-                _noteState.value = _noteState.value.copy(
-                    color = event.color.toLong()
+            is DetailNoteEvent.DeleteNote -> {
+                viewModelScope.launch {
+                    noteUseCase.deleteNote(
+                        _noteState.value
+                    )
+                }
+            }
+
+            is DetailNoteEvent.PinNote -> {
+                _noteState.value = noteState.value.copy(
+                    pinned = event.bool
                 )
             }
 
             is DetailNoteEvent.SaveNote -> {
+                _noteState.value = noteState.value.copy(
+                    updated = Date().time
+                )
                 viewModelScope.launch {
                     noteUseCase.addNote(
                         _noteState.value

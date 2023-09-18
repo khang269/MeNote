@@ -3,7 +3,6 @@ package com.critisys.menote
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -18,15 +17,9 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import com.critisys.menote.presentation.model.HomeViewModel
-import com.critisys.menote.presentation.ui.component.NoteDetailTopBar
 import com.critisys.menote.presentation.ui.component.SearchBar
 import com.critisys.menote.presentation.ui.global.SimpleIconButton
-import com.critisys.menote.presentation.ui.navigation.MeNoteScreen
 import com.critisys.menote.presentation.ui.navigation.NoteNavigation
-import com.critisys.menote.presentation.ui.note.HomeNotesCreen
 import com.critisys.menote.presentation.ui.theme.MeNoteTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -85,21 +78,3 @@ fun MyTheme(){
         }
     }
 }
-
-@Composable
-fun Greeting(
-    name: String,
-    onClick: () -> Unit) {
-    SimpleIconButton(
-        imageVector = Icons.Rounded.Search,
-        onClick = {onClick()} )
-    Text(text = "Hello $name!")
-}
-
-//@Preview(showBackground = true)
-//@Composable
-//fun DefaultPreview() {
-//    MeNoteTheme {
-//        Greeting("Android")
-//    }
-//}

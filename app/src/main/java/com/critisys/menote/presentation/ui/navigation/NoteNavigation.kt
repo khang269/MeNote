@@ -1,8 +1,6 @@
 package com.critisys.menote.presentation.ui.navigation
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
@@ -11,9 +9,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.critisys.menote.presentation.model.HomeViewModel
 import com.critisys.menote.presentation.ui.note.DetailNoteScreen
-import com.critisys.menote.presentation.ui.note.HomeNotesCreen
+import com.critisys.menote.presentation.ui.note.HomeNoteScreen
 
 sealed class MeNoteScreen(val route: String){
     object HomeNoteScreen: MeNoteScreen("home")
@@ -36,7 +33,7 @@ fun NoteNavigation() {
 @ExperimentalFoundationApi
 fun NavGraphBuilder.addHomeGraph(navController: NavController){
     composable(route = MeNoteScreen.HomeNoteScreen.route){
-        HomeNotesCreen(
+        HomeNoteScreen(
             onAddNoteClick = {
                 navController.navigate(MeNoteScreen.DetailNoteScreen.createRoute(-1))
             },

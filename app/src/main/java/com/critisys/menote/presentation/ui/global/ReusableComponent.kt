@@ -105,19 +105,24 @@ fun SimpleIconButton(
             RoundedCornerShape(percent = 30)
         )
         .size(48.dp)
-        .padding(12.dp),
+        .padding(8.dp),
+    tintColor: Color = MaterialTheme.colors.onBackground,
     imageVector: ImageVector,
     onClick: () -> Unit
 ){
+
     IconButton(
         modifier = modifier,
         onClick = { onClick() }) {
         Icon(
+            modifier = Modifier.fillMaxSize(),
             imageVector = imageVector,
             contentDescription = null,
+            tint = tintColor
         )
     }
 }
+
 
 @Composable
 fun SimpleIconButton(
@@ -126,16 +131,20 @@ fun SimpleIconButton(
             RoundedCornerShape(percent = 30)
         )
         .size(48.dp)
-        .padding(12.dp),
+        .padding(8.dp),
+    tintColor: Color = MaterialTheme.colors.onBackground,
     painter: Painter,
     onClick: () -> Unit
 ){
+
     IconButton(
         modifier = modifier,
         onClick = { onClick() }) {
         Icon(
+            modifier = Modifier.fillMaxSize(),
             painter = painter,
             contentDescription = null,
+            tint = tintColor
         )
     }
 }
@@ -194,3 +203,4 @@ fun TransparentHintTextField(
         }
     )
 }
+

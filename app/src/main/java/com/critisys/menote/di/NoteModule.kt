@@ -67,7 +67,8 @@ object NoteModule {
     fun provideDetailNoteUsecase(repository: MeNoteRepository): DetailNoteUseCase{
         return DetailNoteUseCase(
             getNote = GetNote(repository),
-            addNote = AddNote(repository)
+            addNote = AddNote(repository),
+            deleteNote = DeleteNote(repository)
         )
     }
 }
