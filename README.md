@@ -18,9 +18,7 @@ Built with components like Jetpack Compose, Coroutines, ViewModel, Flow-State, R
 
 #### Screenshot
 * Home Screen
-<img alt="Screenshot 1" src="media\Screenshot_2023-10-03-02-28-36-412_com.critisys.menote.jpg" width="40%"/>  
-<img alt="Screenshot 2" src="media\Screenshot_2023-10-03-02-24-43-448_com.critisys.menote.jpg" width="40%"/>
+<img alt="Screenshot 1" src="media\Screenshot_2023-10-03-02-28-36-412_com.critisys.menote.jpg" width="40%"/> <img alt="Screenshot 2" src="media\Screenshot_2023-10-03-02-24-43-448_com.critisys.menote.jpg" width="40%"/>
 * Note Detail Screen
-<img alt="media\Screenshot_2023-10-03-02-39-18-488_com.critisys.menote.jpg" width="40%"/>  
-<img alt="media\Screenshot_2023-10-03-02-39-36-551_com.critisys.menote.jpg" width="40%"/>
+<img alt="Screenshot 3" src="media\Screenshot_2023-10-03-02-39-18-488_com.critisys.menote.jpg" width="40%"/> <img alt="Screenshot 2" src="media\Screenshot_2023-10-03-02-39-36-551_com.critisys.menote.jpg" width="40%"/>
 
