@@ -3,6 +3,7 @@ package com.critisys.menote.presentation.ui.note
 import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyColumn
@@ -52,6 +53,7 @@ fun HomeNoteScreen(
     }
 
     Scaffold(
+        modifier = Modifier.background(MaterialTheme.colors.background),
         scaffoldState = scaffoldState,
         floatingActionButton = {
                                SimpleIconButton(
@@ -175,9 +177,9 @@ fun HomeNoteScreen(
                         }
                     } else {
                         LazyColumn(
-                            Modifier.fillMaxSize()
+                            Modifier.fillMaxWidth()
                         ) {
-                            items(state.notes) { item: MeNote ->
+                            items(state.pinnedNotes) { item: MeNote ->
                                 NoteItem(
                                     note = item,
                                     onClick = { onNoteClick(item) },
@@ -204,19 +206,19 @@ fun HomeNoteScreen(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                Text(
-                    text = "Notes",
-                    style = MaterialTheme.typography.subtitle2,
-                    fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.SemiBold,
-                    color = MaterialTheme.colors.onSurface,
-                    maxLines = 1,
-                    overflow = TextOverflow.Clip
-                )
-
-                Spacer(modifier = Modifier.height(8.dp))
-
             }
+
+            Text(
+                text = "Notes",
+                style = MaterialTheme.typography.subtitle2,
+                fontFamily = FontFamily.SansSerif,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colors.onSurface,
+                maxLines = 1,
+                overflow = TextOverflow.Clip
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
 
             Row(modifier = Modifier.fillMaxWidth()) {
 
@@ -277,7 +279,7 @@ fun HomeNoteScreen(
                     }
                 } else {
                     LazyColumn(
-                        Modifier.fillMaxSize()
+                        Modifier.fillMaxWidth()
                     ) {
                         items(state.notes) { item: MeNote ->
                             NoteItem(

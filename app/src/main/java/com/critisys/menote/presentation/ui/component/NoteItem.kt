@@ -41,6 +41,7 @@ fun NoteItem(
 ){
     Box(
         modifier = Modifier
+
             .fillMaxWidth()
             .wrapContentHeight()
             .clickable { onClick() }
@@ -52,10 +53,10 @@ fun NoteItem(
             .clip(shape = RoundedCornerShape(8.dp))
             .border(
                 width = 1.dp,
-                brush = SolidColor(Color.LightGray),
+                brush = SolidColor(Color.Transparent),
                 shape = RoundedCornerShape(8.dp)
             )
-            .background(color = MaterialTheme.colors.background)
+            .background(color = MaterialTheme.colors.surface)
             .padding(16.dp)) {
 
             if(note.title.isNotBlank()){
@@ -74,7 +75,7 @@ fun NoteItem(
                 style = MaterialTheme.typography.body2,
                 fontFamily = FontFamily.SansSerif,
                 fontWeight = FontWeight.Light,
-                color = MaterialTheme.colors.onSecondary,
+                color = MaterialTheme.colors.onSurface,
                 maxLines = 6,
                 overflow = TextOverflow.Clip)
 

@@ -50,9 +50,10 @@ fun DetailNoteScreen(
 //    )
     Column(
         modifier = Modifier
+            .background(color = MaterialTheme.colors.background)
             .fillMaxWidth()
             .fillMaxHeight()
-            .padding(24.dp),
+            .padding(24.dp)
     ){
 
         NoteDetailTopBar(

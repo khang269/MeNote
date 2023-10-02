@@ -44,7 +44,7 @@ fun SearchBar(
             modifier = modifier
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(percent = 45))
-                .background(color = Color.LightGray)
+                .background(color = MaterialTheme.colors.surface)
                 .padding(8.dp)
         ) {
             BasicTextField(
